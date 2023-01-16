@@ -1,5 +1,12 @@
+from rest_framework.routers import DefaultRouter
 from django.urls import path
+
 from .views import *
 
 
-urlpatterns = []
+router = DefaultRouter()
+router.register(prefix='post',viewset=PostApiViewSet)
+router.register(prefix='image',viewset=PostImageApiViewSet)
+router.register(prefix='like',viewset=PostLikeApiView)
+
+urlpatterns = router.urls

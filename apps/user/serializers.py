@@ -7,8 +7,7 @@ class UserImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserImage
         fields = "__all__"
-        read_only_fields = ( 'user',)
-
+        read_only_fields = ('user',)
 
 
 class UsersAvatarSerializer(serializers.ModelSerializer):
@@ -17,9 +16,10 @@ class UsersAvatarSerializer(serializers.ModelSerializer):
         fields = ['image']
 
 
-
 class UserSerializerList(serializers.ModelSerializer):
-    user_image=UsersAvatarSerializer(many=True, read_only=True)
+
+    user_image = UsersAvatarSerializer(many=True, read_only=True)
+
     class Meta:
         model = User
         fields = ("id",
@@ -30,6 +30,7 @@ class UserSerializerList(serializers.ModelSerializer):
                   "is_online",
                   "user_image",
                   )
+        read_only_fields = ('id', 'last_action', 'is_online')
 
 
 class UserSerializer(serializers.ModelSerializer):

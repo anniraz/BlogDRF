@@ -7,3 +7,4 @@ class FollowSerializer(serializers.ModelSerializer):
         model = Follower
         fields = ('id','from_user','to_user','create_at',)
         read_only_fields = ( 'from_user',)
+        
