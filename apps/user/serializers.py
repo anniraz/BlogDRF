@@ -4,6 +4,7 @@ from apps.user.models import User, UserImage
 
 
 class UserImageSerializer(serializers.ModelSerializer):
+    ''' serializer for profile photo '''
     class Meta:
         model = UserImage
         fields = "__all__"
@@ -11,13 +12,14 @@ class UserImageSerializer(serializers.ModelSerializer):
 
 
 class UsersAvatarSerializer(serializers.ModelSerializer):
+    ''' for list of profile photos '''
     class Meta:
         model = UserImage
         fields = ['image']
 
 
 class UserSerializerList(serializers.ModelSerializer):
-
+    ''' Users  List '''
     user_image = UsersAvatarSerializer(many=True, read_only=True)
 
     class Meta:

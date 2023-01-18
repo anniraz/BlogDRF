@@ -19,8 +19,13 @@ class User(AbstractUser):
 
 
 class UserImage(models.Model):
+    ''' 
+    user's  profile photo 
+    '''
     user = models.ForeignKey(User, related_name='user_image', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='avatars/',blank=True, null=True)
 
     def __str__(self):
         return self.user.username
+    
+    

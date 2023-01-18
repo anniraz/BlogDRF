@@ -30,11 +30,13 @@ class PostImage(models.Model):
 
 
 class PostsLike(models.Model):
-
+    
     post=models.ForeignKey(Post, related_name='list_of_likes', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name='user_like', on_delete=models.CASCADE)
-    like = models.BooleanField(default=False)
-    date = models.DateTimeField(auto_now_add=True)
+    user=models.ForeignKey(User, related_name='user_like', on_delete=models.CASCADE)
+    like=models.BooleanField(default=False)
+    date=models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
         return f'{self.user}: {self.post}: {self.like}'
+
+

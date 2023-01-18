@@ -11,7 +11,7 @@ class UsersApiView(GenericViewSet,
                    mixins.RetrieveModelMixin,
                    mixins.UpdateModelMixin,
                    mixins.DestroyModelMixin):
-
+                   
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

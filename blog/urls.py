@@ -35,18 +35,18 @@ urlpatterns = [
     
     path('api-auth/', include('rest_framework.urls')),
 
-    path('user/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('user/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('users/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('users/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # apps
-    path('', include('apps.user.urls')),
+    path('users/', include('apps.user.urls')),
     path('posts/', include('apps.posts.urls')),
     path('comment/', include('apps.comment.urls')),
     path('follower/', include('apps.follower.urls')),
     path('favorite/',include('apps.favorites.urls')),
 
     # swagger
-    path('swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
