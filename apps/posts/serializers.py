@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.posts.models import Post, PostImage,PostsLike
+from apps.posts.models import Post, PostImage,PostsLike,PostTag
 
 class PostLikeSerializers(serializers.ModelSerializer):
     class Meta:
@@ -33,6 +33,7 @@ class PostSerializer(serializers.ModelSerializer):
                   'title',
                   'description',
                   'user',
+                  "tags",
                   'post_images',
                   'list_of_likes',
                   )
@@ -45,3 +46,10 @@ class PostSerializer(serializers.ModelSerializer):
         representation["like's count"] = instance.list_of_likes.count()
 
         return representation
+
+
+class PostTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=PostTag
+        fields='__all__'
+        read_only_fields = ('id', 'user',)

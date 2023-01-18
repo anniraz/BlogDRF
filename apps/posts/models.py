@@ -4,10 +4,19 @@ from django.contrib.auth import get_user_model
 
 User=get_user_model()
 
+class PostTag(models.Model):
+    title=models.CharField(max_length=255)
+    user = models.ForeignKey(User, related_name='users_tag', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     user = models.ForeignKey(User, related_name='user_posts', on_delete=models.CASCADE)
+    tags=models.ManyToManyField(PostTag,null=True,blank=True)
     create_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
